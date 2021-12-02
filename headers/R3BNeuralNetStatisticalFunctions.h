@@ -1,11 +1,10 @@
 ////////////////////////////////////////////////////////////////////////////////
-//                               Some Statistical Functions                   //
-//                                   GGJ, September 2021                      //
+//                        Some Statistical Functions                          //
+//                           GGJ, September 2021                              //
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "headers.h"
+#include "R3BNeuralNetHeaders.h"
 
-using namespace std;
 
 
 // -----------  Calculating mean of a given vector ----------
