@@ -1,6 +1,6 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
-project(dummy)
+project(califaNN)
 
 set (CMAKE_CXX_STANDARD 11)
 
@@ -58,7 +58,20 @@ ${R3BROOT_LIBRARIES}/r3bdata/califaData
 ${R3BROOT_LIBRARIES}/r3bdata/amsData
 ${R3BROOT_LIBRARIES}/r3bdata
 ${R3BROOT_LIBRARIES}/r3bdata/wrData
+/usr/local/include/google/tensorflow
+/usr/local/include
+/usr/local/include/google/protobuf
+/usr/local/include/eigen3
+/usr/local/include/google/tensorflow/tensorflow/contrib/makefile/downloads/absl
+/home/gabri/CODE/FAIRSOFT/build_Feb21/include/root6/
+/usr/local/include/google/tensorflow/tensorflow/lite/tools/make/downloads/eigen
+/usr/local/include/google/tensorflow/tensorflow/lite/tools/make/downloads/absl
+/usr/local/lib
+/home/gabri/CODE/TensorFlow/tensorflow/bazel-bin
+/usr/local/include/google/protobuf
+${PROJECT_SOURCE_DIR}/headers
 )
+
 
 set(LINK_DIRECTORIES
 ${ROOT_LIBRARY_DIR}
@@ -68,5 +81,5 @@ ${FAIRROOT_LIBRARY_DIR}
 include_directories( ${INCLUDE_DIRECTORIES})
 
 
-add_executable(dummy macros/compile_root.cc)
-target_link_libraries(dummy ${ROOT_LIBRARIES} ${FAIRROOT_LIBRARY_DIR}../include/)
+add_executable(califaNN macros/compile_root.cc)
+target_link_libraries(califaNN ${ROOT_LIBRARIES})
