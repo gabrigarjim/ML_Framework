@@ -70,6 +70,8 @@ ${R3BROOT_LIBRARIES}/r3bdata/wrData
 /home/gabri/CODE/TensorFlow/tensorflow/bazel-bin
 /usr/local/include/google/protobuf
 ${PROJECT_SOURCE_DIR}/headers
+${PROJECT_SOURCE_DIR}/sources
+${PROJECT_SOURCE_DIR}/macros
 )
 
 
@@ -81,5 +83,5 @@ ${FAIRROOT_LIBRARY_DIR}
 include_directories( ${INCLUDE_DIRECTORIES})
 
 
-add_executable(califaNN macros/compile_root.cc)
-target_link_libraries(califaNN ${ROOT_LIBRARIES})
+add_executable(califaNN macros/convolutions.cc)
+target_link_libraries(califaNN ${ROOT_LIBRARIES} tensorflow_cc tensorflow_framework)
