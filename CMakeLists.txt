@@ -69,6 +69,7 @@ ${R3BROOT_LIBRARIES}/r3bdata/wrData
 /usr/local/lib
 /home/gabri/CODE/TensorFlow/tensorflow/bazel-bin
 /usr/local/include/google/protobuf
+/home/gabri/CODE/FAIRROOT/install_Feb21/include/
 ${PROJECT_SOURCE_DIR}/headers
 ${PROJECT_SOURCE_DIR}/sources
 ${PROJECT_SOURCE_DIR}/macros
