@@ -9,7 +9,7 @@
 #include "tensorflow/cc/framework/gradients.h"
 #include "tensorflow/cc/ops/standard_ops.h"
 #include "tensorflow/core/framework/tensor.h"
-#include "../headers/califaNN_headers.h"
+#include "../headers/R3BCalifaNNHeaders.h"
 #include "../headers/find_position.h"
 
 using namespace tensorflow;
@@ -120,17 +120,17 @@ int main() {
 
   // ================ Things for convolutional Layers ================
 
-  Tensor kernel(DT_FLOAT,TensorShape({5,4,1,1}));   // Kernel
+  Tensor kernel(DT_FLOAT,TensorShape({2,2,1,1}));   // Kernel
 
-  for (int i = 0 ;  i < 5 ; i++){
-    for (int k = 0 ; k < 4 ; k++){
+  for (int i = 0 ;  i < 2 ; i++){
+    for (int k = 0 ; k < 2 ; k++){
 
       kernel.tensor<float,4>()(i,k,0,0)=1;
 
     }
   }
 
-  int strides[4] = {1,5,4,1};   // Strides. It's common to use 0 and 3 elements as 1. 3 & 3 here means filter does not overlap
+  int strides[4] = {1,4,4,1};   // Strides. It's common to use 0 and 3 elements as 1. 3 & 3 here means filter does not overlap
 
   string padding="SAME"; // Padding
 
@@ -138,7 +138,7 @@ int main() {
 
 
    // ========== Things for Pooling Layers ===========
-   int poolKernelSize[4]={1,3,3,1};
+   int poolKernelSize[4]={1,4,4,1};
 
    cout <<"Matrix Shape : "<<testMatrix.shape()<<endl;
 
@@ -179,9 +179,23 @@ int main() {
 
    cout<<"Convoluted Matrix: "<<endl;
 
-   for (int j=0;j<16*5;j++) {
+   for (int j=0;j<32*13;j++) {
 
-    cout<<outsTensor[1].flat<float>()(j)<<"   ";
+    cout<<setprecision(2)<<outsTensor[1].flat<float>()(j)<<"       ";
+
+    if((j+1)%32==0)
+     cout<<endl;
+
+   }
+   cout<<endl;
+
+
+
+   cout<<"Average Pooling Matrix: "<<endl;
+
+   for (int j=0;j<16*7;j++) {
+
+    cout<<outsTensor[2].flat<float>()(j)<<"       ";
 
     if((j+1)%16==0)
      cout<<endl;
@@ -189,31 +203,18 @@ int main() {
    }
    cout<<endl;
 
-/*
-
-   cout<<"Average Pooling Matrix: "<<endl;
-
-   for (int j=0;j<matrixDim;j++) {
-
-    cout<<outsTensor[2].flat<float>()(j)<<"   ";
-
-    if(j==2 || j==5 || j==8)
-     cout<<endl;
-
-   }
-   cout<<endl;
 
    cout<<"Max Pooling Matrix: "<<endl;
 
-   for (int j=0;j<matrixDim;j++) {
+   for (int j=0;j<16*7;j++) {
 
-    cout<<outsTensor[3].flat<float>()(j)<<"   ";
+    cout<<outsTensor[3].flat<float>()(j)<<"     ";
 
-    if(j==2 || j==5 || j==8)
+    if((j+1)%16==0)
      cout<<endl;
 
    }
    cout<<endl;
 
-*/
+
 }

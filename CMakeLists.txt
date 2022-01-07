@@ -81,8 +81,12 @@ ${ROOT_LIBRARY_DIR}
 ${FAIRROOT_LIBRARY_DIR}
 )
 
+file(GLOB sources ${PROJECT_SOURCE_DIR}/sources/*.cxx)
+file(GLOB headers ${PROJECT_SOURCE_DIR}/headers/*.h)
+
+
 include_directories( ${INCLUDE_DIRECTORIES})
 
 
-add_executable(califaNN macros/convolutions.cc)
-target_link_libraries(califaNN ${ROOT_LIBRARIES} tensorflow_cc tensorflow_framework)
+add_executable(califaNN macros/check_class.cc ${sources} ${headers})
+target_link_libraries(califaNN ${ROOT_LIBRARIES} tensorflow_cc tensorflow_framework )
