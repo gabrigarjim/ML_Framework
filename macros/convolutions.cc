@@ -9,8 +9,8 @@
 #include "tensorflow/cc/framework/gradients.h"
 #include "tensorflow/cc/ops/standard_ops.h"
 #include "tensorflow/core/framework/tensor.h"
-#include "../headers/R3BCalifaNNHeaders.h"
-#include "../headers/find_position.h"
+#include "R3BCalifaNNHeaders.h"
+#include "find_position.h"
 
 using namespace tensorflow;
 using namespace tensorflow::ops;
@@ -130,7 +130,7 @@ int main() {
     }
   }
 
-  int strides[4] = {1,4,4,1};   // Strides. It's common to use 0 and 3 elements as 1. 3 & 3 here means filter does not overlap
+  int strides[4] = {1,1,1,1};   // Strides. It's common to use 0 and 3 elements as 1. 3 & 3 here means filter does not overlap
 
   string padding="SAME"; // Padding
 
@@ -168,7 +168,7 @@ int main() {
 
    for (int j=0;j<matrixRows*matrixColumns;j++) {
 
-    cout<<setprecision(3)<<outsTensor[0].flat<float>()(j)<<"   ";
+    cout<<setprecision(3)<<outsTensor[0].flat<float>()(j)<<"    ";
 
     if((j+1)%matrixColumns==0)
      cout<<endl;
@@ -179,11 +179,11 @@ int main() {
 
    cout<<"Convoluted Matrix: "<<endl;
 
-   for (int j=0;j<32*13;j++) {
+   for (int j=0;j<64*25;j++) {
 
     cout<<setprecision(2)<<outsTensor[1].flat<float>()(j)<<"       ";
 
-    if((j+1)%32==0)
+    if((j+1)%64==0)
      cout<<endl;
 
    }
@@ -193,11 +193,11 @@ int main() {
 
    cout<<"Average Pooling Matrix: "<<endl;
 
-   for (int j=0;j<16*7;j++) {
+   for (int j=0;j<64*25;j++) {
 
     cout<<outsTensor[2].flat<float>()(j)<<"       ";
 
-    if((j+1)%16==0)
+    if((j+1)%64==0)
      cout<<endl;
 
    }
@@ -206,11 +206,11 @@ int main() {
 
    cout<<"Max Pooling Matrix: "<<endl;
 
-   for (int j=0;j<16*7;j++) {
+   for (int j=0;j<64*25;j++) {
 
     cout<<outsTensor[3].flat<float>()(j)<<"     ";
 
-    if((j+1)%16==0)
+    if((j+1)%64==0)
      cout<<endl;
 
    }

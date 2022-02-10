@@ -71,22 +71,12 @@ ${R3BROOT_LIBRARIES}/r3bdata/wrData
 /usr/local/include/google/protobuf
 /home/gabri/CODE/FAIRROOT/install_Feb21/include/
 ${PROJECT_SOURCE_DIR}/headers
-${PROJECT_SOURCE_DIR}/sources
 ${PROJECT_SOURCE_DIR}/macros
 )
 
-
-set(LINK_DIRECTORIES
-${ROOT_LIBRARY_DIR}
-${FAIRROOT_LIBRARY_DIR}
-)
-
-file(GLOB sources ${PROJECT_SOURCE_DIR}/sources/*.cxx)
-file(GLOB headers ${PROJECT_SOURCE_DIR}/headers/*.h)
-
-
 include_directories( ${INCLUDE_DIRECTORIES})
+link_directories( ${LINK_DIRECTORIES})
 
 
-add_executable(califaNN macros/check_class.cc ${sources} ${headers})
+add_executable(califaNN macros/convolutions.cc ${headers})
 target_link_libraries(califaNN ${ROOT_LIBRARIES} tensorflow_cc tensorflow_framework )
